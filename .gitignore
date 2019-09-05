@@ -1,3 +1,5 @@
 *.o
 *.a
 obj/
+bin.lds
+convert
