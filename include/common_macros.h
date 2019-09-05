@@ -3,12 +3,29 @@
 
 #include <regdef.h>
 
+#define TEST_BEGIN      \
+    .set noreorder;     \
+    addiu s0, s0 ,1;    \
+    addiu s2, zero, 0x0;\
+    lui   t2, 0x1;
+
+#define TEST_END        \
+add_score:              \
+    addiu s3, s3, 1;    \
+test_failed:            \
+    sll t1, s0, 24;     \
+    or t0, t1, s3;      \
+    sw t0, 0(s1);       \
+    jr ra;              \
+    nop;
+
 #define TEST_CASE(num, reg_dest, val_expected, code...) \
 test_ ## num : \
     code; \
     li k1, val_expected; \
     li k0, num; \
-    bne reg_dest, k1, test_failed;
+    bne reg_dest, k1, test_failed; \
+    nop;
 
 # Tests for instructions with R-R operations
 
@@ -51,10 +68,11 @@ test_ ## num : \
         inst t0, zero, t1;  \
     )
 
-#define TEST_RR_ZERO_DEST(num, inst, src)   \
+#define TEST_RR_ZERO_DEST(num, inst, src_1, src_2)   \
     TEST_CASE(num, zero, 0, \
-        li  t1, src;        \
-        inst zero, t1, t1;  \
+        li  t0, src_1;      \
+        li  t1, src_2;      \
+        inst zero, t0, t1;  \
     )
 
 #endif
