@@ -52,7 +52,7 @@ test_init:
     nop
 
 inst_test:
-    jal     t1_add_test
+    jal     t1_addu_test
     nop
     jal     wait_1s
     nop
