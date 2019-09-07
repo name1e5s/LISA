@@ -1,2 +1,2 @@
-# MIPS-tests
+# LISA
 Unit tests for MIPS-Edu.
