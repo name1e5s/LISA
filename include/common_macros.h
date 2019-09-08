@@ -75,4 +75,27 @@ test_ ## num : \
         inst zero, t0, t1;  \
     )
 
+#define TEST_RI(num, inst, result, src_1, imm) \
+    TEST_CASE(num, t0, result,  \
+        li  t1, src_1;          \
+        inst t0, t1, imm;       \
+    )
+
+#define TEST_RI_SRC_EQ_DEST(num, inst, result, src_1, imm) \
+    TEST_CASE(num, t0, result,  \
+        li  t0, src_1;          \
+        inst t0, t0, imm;       \
+    )
+
+#define TEST_RI_ZERO_SRC(num, inst, result, imm) \
+    TEST_CASE(num, t0, result,  \
+        inst t0, zero, imm;     \
+    )
+
+#define TEST_RI_ZERO_DEST(num, inst, result, src_1, imm) \
+    TEST_CASE(num, t0, result,  \
+        li  t1, src_1;          \
+        inst zero, t1, imm;     \
+    )
+
 #endif
