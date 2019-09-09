@@ -92,8 +92,8 @@ test_ ## num : \
         inst t0, zero, imm;     \
     )
 
-#define TEST_RI_ZERO_DEST(num, inst, result, src_1, imm) \
-    TEST_CASE(num, t0, result,  \
+#define TEST_RI_ZERO_DEST(num, inst, src_1, imm) \
+    TEST_CASE(num, t0, 0,  \
         li  t1, src_1;          \
         inst zero, t1, imm;     \
     )

@@ -56,6 +56,10 @@ inst_test:
     nop
     jal     wait_1s
     nop
+    jal     t2_addiu_test
+    nop
+    jal     wait_1s
+    nop
 
 test_end:
     li      s0, TEST_NUM
