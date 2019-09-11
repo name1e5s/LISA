@@ -52,6 +52,10 @@ test_init:
     nop
 
 inst_test:
+    jal     t0_empty_test
+    nop
+    jal     wait_1s
+    nop  
     jal     t1_addu_test
     nop
     jal     wait_1s
