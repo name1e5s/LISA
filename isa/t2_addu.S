@@ -2,7 +2,7 @@
 #include <regdef.h>
 #include <common_macros.h>
 
-LEAF(t1_addu_test)
+LEAF(t2_addu_test)
 
     TEST_BEGIN
 
@@ -38,4 +38,4 @@ LEAF(t1_addu_test)
 
     TEST_END
 
-END(t1_addu_test)
+END(t2_addu_test)

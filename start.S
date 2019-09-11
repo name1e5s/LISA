@@ -4,6 +4,12 @@
 
 #define TEST_NUM 1
 
+#define TEST_UNIT(test_name) \
+    jal     test_name    ;  \
+    nop                  ;  \
+    jal     wait_1s      ;  \
+    nop                  
+
     .set    noreorder
     .globl  _start
     .globl  start
@@ -52,18 +58,11 @@ test_init:
     nop
 
 inst_test:
-    jal     t0_empty_test
-    nop
-    jal     wait_1s
-    nop  
-    jal     t1_addu_test
-    nop
-    jal     wait_1s
-    nop
-    jal     t2_addiu_test
-    nop
-    jal     wait_1s
-    nop
+    TEST_UNIT(t0_empty_test)
+    TEST_UNIT(t1_add_test)
+    TEST_UNIT(t2_addu_test)
+    TEST_UNIT(t3_addi_test)
+    TEST_UNIT(t4_addiu_test)
 
 test_end:
     li      s0, TEST_NUM
