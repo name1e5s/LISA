@@ -5,9 +5,9 @@
 #define TEST_NUM 1
 
 #define TEST_UNIT(test_name) \
-    jal     test_name    ;  \
-    nop                  ;  \
-    jal     wait_1s      ;  \
+    jal     test_name ## _test  ;   \
+    nop                         ;   \
+    jal     wait_1s             ;   \
     nop                  
 
     .set    noreorder
@@ -58,11 +58,17 @@ test_init:
     nop
 
 inst_test:
-    TEST_UNIT(t0_empty_test)
-    TEST_UNIT(t1_add_test)
-    TEST_UNIT(t2_addu_test)
-    TEST_UNIT(t3_addi_test)
-    TEST_UNIT(t4_addiu_test)
+    TEST_UNIT(t0_empty)
+    TEST_UNIT(t1_add)
+    TEST_UNIT(t2_addu)
+    TEST_UNIT(t3_addi)
+    TEST_UNIT(t4_addiu)
+    TEST_UNIT(t5_and)
+    TEST_UNIT(t6_andi)
+    TEST_UNIT(t7_nor)
+    TEST_UNIT(t8_or)
+    TEST_UNIT(t9_ori)
+    TEST_UNIT(t10_sllv)
 
 test_end:
     li      s0, TEST_NUM
